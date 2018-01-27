@@ -36,16 +36,10 @@ public class Zombie {
         this.Apperance.transform.localScale = new Vector3(this.size, this.size, this.size);
     }
 
-    public void SetTarget()
-    {
-
-    }
-
+ 
     public void Infect(GameObject Prefab, Transform infected)
     {
         Zombie myZombie = new Zombie(Prefab, infected.position , infected.rotation, infected.gameObject.GetComponent<Human>().size);
-
-
 
         GameObject.Destroy(infected.gameObject);
     }

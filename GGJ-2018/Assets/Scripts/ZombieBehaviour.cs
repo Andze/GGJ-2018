@@ -16,7 +16,20 @@ public class ZombieBehaviour : MonoBehaviour {
         else
         {
             transform.position = Vector2.MoveTowards(transform.position, agent.moveTowards.position, agent.speed * Time.deltaTime);
+
+            transform.rotation = Quaternion.Lerp(transform.rotation, RotateTowards(), agent.speed * Time.deltaTime);
         }
+    }
+
+    private Quaternion RotateTowards()
+    {
+        Vector3 vectorToTarget = agent.moveTowards.position - transform.position;
+
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        return q;
     }
 
     public void Wander()
