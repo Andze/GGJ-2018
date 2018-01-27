@@ -2,33 +2,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Zombie : MonoBehaviour {
+public class Zombie {
 
     public float health;
     public float size;
     public float speed;
-    public Transform moveTowards;
-    public bool hasTarget = false;
+    public static int ID = 0;
+    public int ZombieID;
+    public Transform moveTowards = null;
+    public GameObject Apperance;
 
-    private void Awake()
+    public Zombie(GameObject prefab, Vector3 location, Quaternion Rotation )
     {
-        size = Random.Range(0.5f, 1.5f);
-        speed = 3.0f - size;
-        health = 100 * size;
-        transform.localScale = new Vector3(size, size, size);
-        hasTarget = false;
+        this.ZombieID = GetID();
+        this.Apperance = GameObject.Instantiate(prefab, location , Rotation);
+        this.Apperance.GetComponent<ZombieBehaviour>().agent = this;
+        this.Apperance.name = "Zombie" + this.ZombieID;
+        this.size = Random.Range(0.5f, 1.5f);
+        this.speed = 3.0f - size;
+        this.health = 100 * size;
+        this.Apperance.transform.localScale = new Vector3(size, size, size);
     }
 
-    void Update()
+    public Zombie(GameObject prefab, Vector3 location, Quaternion Rotation, float agentSize)
     {
-        if (moveTowards == null)
-            Wander();
-        else
-            transform.position = Vector2.MoveTowards(transform.position, moveTowards.position, speed * Time.deltaTime);
+        this.ZombieID = GetID();
+        this.Apperance = GameObject.Instantiate(prefab, location, Rotation);
+        this.Apperance.GetComponent<ZombieBehaviour>().agent = this;
+        this.Apperance.name = "Zombie" + this.ZombieID;
+        this.size = agentSize;
+        this.speed = 3.0f - this.size;
+        this.health = 100 * this.size;
+        this.Apperance.transform.localScale = new Vector3(this.size, this.size, this.size);
     }
 
-    void Wander()
+    public void SetTarget()
     {
 
+    }
+
+    public void Infect(GameObject Prefab, Transform infected)
+    {
+        Zombie myZombie = new Zombie(Prefab, infected.position , infected.rotation, infected.gameObject.GetComponent<Human>().size);
+
+
+
+        GameObject.Destroy(infected.gameObject);
+    }
+    
+    static int GetID()
+    {
+        return ID++;
     }
 }

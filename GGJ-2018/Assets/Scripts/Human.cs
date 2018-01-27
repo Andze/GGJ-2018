@@ -22,31 +22,17 @@ public class Human : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Zombie")
-            collision.transform.gameObject.GetComponent<Zombie>().moveTowards = transform;                  
+            collision.transform.gameObject.GetComponent<ZombieBehaviour>().agent.moveTowards = transform;                  
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.transform.tag == "Zombie")
-            collision.transform.gameObject.GetComponent<Zombie>().moveTowards = null;
+            collision.transform.gameObject.GetComponent<ZombieBehaviour>().agent.moveTowards = null;
     }
 
    
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.transform.tag == "Zombie")
-        {
-
-            //make new zombie
-            //zombie 2 overloads 1 random new spawn and one with human size
-            Destroy(this.transform.gameObject);
-        }
-
-        if (collision.transform.tag == "Bullet")
-        {
-            //health -= other.getcomponent<Bullet>().Damage;
-        }
-    }
+   
   
     
 }
