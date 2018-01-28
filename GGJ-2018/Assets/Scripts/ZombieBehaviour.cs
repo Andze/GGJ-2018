@@ -15,7 +15,6 @@ public class ZombieBehaviour : MonoBehaviour {
         }
         else
         {
-
             //use steering basic to seek 
             //and to look at target
             transform.position = Vector2.MoveTowards(transform.position, agent.moveTowards.position, agent.speed * Time.deltaTime);
@@ -42,8 +41,7 @@ public class ZombieBehaviour : MonoBehaviour {
         if (collision.transform.tag == "Human")
         {
             agent.Infect(agent.Apperance, collision.transform);
-         
-            
+ 
         }
 
         if (collision.transform.tag == "Bullet")

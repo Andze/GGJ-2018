@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Zombie {
 
@@ -41,7 +42,13 @@ public class Zombie {
     {
         Zombie myZombie = new Zombie(Prefab, infected.position , infected.rotation, infected.gameObject.GetComponent<Human>().size);
 
-        infected.gameObject.GetComponentInChildren<NearSensor>().targets.Remove(infected.gameObject.GetComponent<Rigidbody>());
+        ICollection<Rigidbody> targets = infected.gameObject.GetComponentInChildren<NearSensor>().targets;
+
+        foreach (Rigidbody r in targets)
+        {
+            r.gameObject.GetComponentInChildren<NearSensor>().targets.Remove(infected.gameObject.GetComponent<Rigidbody>());
+        }
+
         GameObject.Destroy(infected.gameObject);
     }
     

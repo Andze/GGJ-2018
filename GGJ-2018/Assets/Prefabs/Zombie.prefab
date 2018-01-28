@@ -29,7 +29,6 @@ GameObject:
   - component: {fileID: 114418625484729682}
   - component: {fileID: 114700316336942152}
   - component: {fileID: 114661367851893730}
-  - component: {fileID: 114152108958725124}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Zombie
@@ -110,22 +109,6 @@ MonoBehaviour:
   cohesionWeight: 1.5
   separationWeight: 2
   velocityMatchWeight: 1
---- !u!114 &114152108958725124
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1572518200969144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f13dd1537336334297be866e2220e29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainWhiskerLen: 1.25
-  wallAvoidDistance: 0.5
-  sideWhiskerLen: 0.701
-  sideWhiskerAngle: 45
-  maxAcceleration: 40
 --- !u!114 &114237285589381298
 MonoBehaviour:
   m_ObjectHideFlags: 1

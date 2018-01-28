@@ -12,7 +12,7 @@ public class FlockingUnit : MonoBehaviour
     private Cohesion cohesion;
     private Separation separation;
     private VelocityMatch velocityMatch;
-
+    private float zombieSize;
     private NearSensor sensor;
 
     // Use this for initialization
@@ -23,9 +23,12 @@ public class FlockingUnit : MonoBehaviour
         cohesion = GetComponent<Cohesion>();
         separation = GetComponent<Separation>();
         velocityMatch = GetComponent<VelocityMatch>();
-
+        zombieSize = GetComponent<ZombieBehaviour>().agent.size;
         sensor = transform.Find("Sensor").GetComponent<NearSensor>();
-    }
+
+        cohesionWeight -= zombieSize;
+        separationWeight *= (zombieSize * 2);
+}
 
     // Update is called once per frame
     void Update()
