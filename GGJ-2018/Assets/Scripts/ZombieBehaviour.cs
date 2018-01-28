@@ -15,6 +15,9 @@ public class ZombieBehaviour : MonoBehaviour {
         }
         else
         {
+
+            //use steering basic to seek 
+            //and to look at target
             transform.position = Vector2.MoveTowards(transform.position, agent.moveTowards.position, agent.speed * Time.deltaTime);
 
             transform.rotation = Quaternion.Lerp(transform.rotation, RotateTowards(), agent.speed * Time.deltaTime);

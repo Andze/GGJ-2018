@@ -25,7 +25,7 @@ public class Cohesion : MonoBehaviour {
         /* Sums up everyone's position who is close enough and in front of the character */
         foreach (Rigidbody r in targets)
         {
-            if (steeringBasics.isFacing(r.position, facingCosineVal))
+            if (steeringBasics.isFacing(r.transform.position, facingCosineVal))
             {
                 centerOfMass += r.position;
                 count++;

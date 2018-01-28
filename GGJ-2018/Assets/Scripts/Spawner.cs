@@ -6,16 +6,15 @@ public class Spawner : MonoBehaviour {
 
     public GameObject zombiePrefab;
     public Transform Location;
+    public int amount;
     public List<Zombie> zombies;
+    
 
     private void Start()
     {
-        Zombie myZombie = new Zombie(zombiePrefab, Location.position, Quaternion.identity);
-        
-        Zombie myZombie1 = new Zombie(zombiePrefab, Location.position, Quaternion.identity);
-        zombies = new List<Zombie> { myZombie,myZombie1 };
-
-        Debug.Log(myZombie.ZombieID + "+ " + myZombie1.ZombieID);
-
+        zombies = new List<Zombie>{};
+        for (int i = 0; i < amount; i++)
+        {
+        }
     }
 }

@@ -41,6 +41,7 @@ public class Zombie {
     {
         Zombie myZombie = new Zombie(Prefab, infected.position , infected.rotation, infected.gameObject.GetComponent<Human>().size);
 
+        infected.gameObject.GetComponentInChildren<NearSensor>().targets.Remove(infected.gameObject.GetComponent<Rigidbody>());
         GameObject.Destroy(infected.gameObject);
     }
     
