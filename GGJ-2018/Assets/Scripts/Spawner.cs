@@ -15,6 +15,8 @@ public class Spawner : MonoBehaviour {
         zombies = new List<Zombie>{};
         for (int i = 0; i < amount; i++)
         {
+            Zombie myZombie = new Zombie(zombiePrefab, (Location.position = Random.insideUnitCircle * 50), Quaternion.identity);
+            zombies.Add(myZombie);
         }
     }
 }
