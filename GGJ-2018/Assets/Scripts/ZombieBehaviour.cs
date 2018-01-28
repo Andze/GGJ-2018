@@ -24,11 +24,8 @@ public class ZombieBehaviour : MonoBehaviour {
     private Quaternion RotateTowards()
     {
         Vector3 vectorToTarget = agent.moveTowards.position - transform.position;
-
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-
         return q;
     }
 
@@ -37,7 +34,7 @@ public class ZombieBehaviour : MonoBehaviour {
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "Human")
         {

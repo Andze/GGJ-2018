@@ -10,29 +10,36 @@ public class Human : MonoBehaviour {
     public Transform target;
 
     private void Awake()
-    {
+    { 
         size = Random.Range(0.5f, 1.5f);
         health = 100 * size;
         speed = 3.0f - size;
         transform.localScale = new Vector3(size,size,size);
-        GetComponent<CircleCollider2D>().radius += size;
+        GetComponentInChildren<SphereCollider>().radius += size;
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.transform.tag == "Zombie")
-            collision.transform.gameObject.GetComponent<ZombieBehaviour>().agent.moveTowards = transform;                  
+            collision.transform.gameObject.GetComponent<SteeringBasics>().seek(transform.position,1f);                  
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit(Collider collision)
     {
         if(collision.transform.tag == "Zombie")
             collision.transform.gameObject.GetComponent<ZombieBehaviour>().agent.moveTowards = null;
     }
 
-   
-   
+    private void Update()
+    {
+        
+
+    }
+
   
-    
+
+
+
+
+
 }
